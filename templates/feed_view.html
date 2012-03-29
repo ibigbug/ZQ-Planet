@@ -1,0 +1,20 @@
+{% extends "layout.html" %}
+{% block title %}
+View Feeds
+{% end %}
+{% block section %}
+<form action="/feed/view" method="post" class="ft-left">
+    {{ xsrf_form_html() }}
+    <ul>
+        {% for e in entry %}
+        <li>
+        <a href="{{ e.feed_url }}">{{ e.feed_name }}</a>
+        <a href="{{ e.feed_url }}">{{ e.feed_url }}</a>
+        <input id="id" name="id" type="checkbox" value="{{ e.id }}" />
+        </li>
+        {% end %}
+    </ul>
+    <input type="submit" value="Delete Checked" />
+    <a href="/feed/add">add</a>
+</form>
+{% end %}

@@ -1,0 +1,30 @@
+<!DOCTYPE HTML>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>{% block title %}{% end %}</title>
+        <link media="screen" rel="stylesheet/less" href="/static/less/base.less" type="text/less" />
+        <link media="screen" rel="stylesheet/less" href="/static/less/lib.less" type="text/less" />
+        <link media="screen" rel="stylesheet/less" href="/static/less/layout.less" type="text/less" />
+        <script src="/static/js/less.js" type="text/javascript"></script>
+        <script src="/static/js/jquery.js" type="text/javascript"></script>
+        <link href='http://fonts.googleapis.com/css?family=Economica|Ribeye+Marrow' rel='stylesheet' type='text/css'>
+        {% block style %}{% end %}
+    </head>
+    <body>
+        <header id="header">
+        {% include "header.html" %}
+        </header>
+        <div id="wrap">
+            {% block sidebar %}
+            {% end %}
+            <section id="section">
+            {% block section %}{% end %}
+            </section>
+        </div>
+        <footer id="footer">
+        {% include "footer.html" %}
+        </footer>
+        {% block script %}{% end %}
+    </body>
+</html>

@@ -1,0 +1,29 @@
+{% extends "layout.html" %}
+{% block title %}
+Ziqiang Planet
+{% end %}
+{% block sidebar %}
+<aside id="aside">
+<ul>
+    {% for f in feeds %}
+    <li class="feed" id="feed-{{ f.id }}">
+    <a href="#">{{ f.feed_name }}</a>
+    </li>
+    {% end %}
+</ul>
+<span class="sidebar-toggle">
+    {{ xsrf_form_html() }}
+    <span class="table">
+        <span class="cell">&#9668;</span>
+        <span class="cell" style="display:none;">&#9658;</span>
+    </span>
+</span>
+</aside>
+{% end %}
+{% block section %}
+<div class="container">
+</div>
+{% end %}
+{% block script %}
+<script src="/static/js/func.js" type="text/javascript"></script>
+{% end %}

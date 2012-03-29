@@ -1,0 +1,10 @@
+{% extends "layout.html" %}
+{% block title %}Commit Feed{% end %}
+{% block section %}
+    <form method="post" action="">
+        {{ xsrf_form_html() }}
+        <input id="feed_name" name="feed_name" type="text" />
+        <input id="feed_url" name="feed_url" type="text" />
+        <input type="submit" value="Submit" />
+    </form>
+{% end %}
