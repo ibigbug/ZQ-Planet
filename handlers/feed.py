@@ -48,6 +48,11 @@ class FetchHandler(BaseHandler,FeedMixin,EntryMixin):
         for f in feeds:
             d  = feedparser.parse(f.feed_url)
             for e in d.entries:
+                exist =\
+                self.db.query(Entry).filter_by(entry_title=to_unicode(e.title)).first()
+                print exist
+                if exist:
+                    continue
                 entry = Entry(entry_title=to_unicode(e.title))
                 entry.entry_author = to_unicode(e.author)
                 entry.entry_link = to_unicode(e.link)

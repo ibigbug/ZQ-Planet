@@ -99,18 +99,20 @@ var waterFlow = {
                 success: function(data){
                     $('.container').data('data',data);
                     for(var i=0; i<waterFlow.columnNum;i++){
-                        var index = waterFlow._index;
-                        var html = '';
-                        html += '<article id="index-'+index+'">';
-                        html += '<h3><a href="'+data.data[i]['link']+'">'+data.data[i]['title']+'</a></h3>';
-                        html += '<div class="meta"><time datetime="'+data.data[i].time+'">'+data.data[i].time+'</time> By '+data.data[i].author+'</div>'
-                        html += '<div class="content">'+data.data[i].content+'</div>'
-                        html += '</aticle>';
-                        html += '</div>';
-                        $('#column-'+i).append(html);
-                        waterFlow._isFirst = false;
-                        waterFlow._index++ ;
-                        if(waterFlow._index>=data.count) waterFlow._loadFinish = true;
+                        for (var j=0;j<2;j++){
+                            var index = waterFlow._index;
+                            var html = '';
+                            html += '<article id="index-'+index+'">';
+                            html += '<h3><a href="'+data.data[index]['link']+'">'+data.data[index]['title']+'</a></h3>';
+                            html += '<div class="meta"><time datetime="'+data.data[index].time+'">'+data.data[index].time+'</time> By '+data.data[index].author+'</div>'
+                            html += '<div class="content">'+data.data[index].content+'</div>'
+                            html += '</aticle>';
+                            html += '</div>';
+                            $('#column-'+i).append(html);
+                            waterFlow._isFirst = false;
+                            waterFlow._index++ ;
+                            if(waterFlow._index>=data.count) waterFlow._loadFinish = true;
+                        }
                     }
                 },
             });
