@@ -1,8 +1,9 @@
 #!/usr/bin/env python
 
+from tornado.options import options
 from sqlalchemy import create_engine
 from sqlalchemy import Column, Integer, String, DateTime, Text
-engine = create_engine('mysql://root:123@localhost/feedburner?charset=utf8', echo=False)
+engine = create_engine(options.database, echo=options.debug)
 from sqlalchemy.ext.declarative import declarative_base
 Base = declarative_base()
 

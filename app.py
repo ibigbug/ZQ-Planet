@@ -3,8 +3,9 @@
 import os
 PROJDIR = os.path.abspath(os.path.dirname(__file__))
 ROOTDIR = os.path.split(PROJDIR)[0]
-import sys
-sys.path.append(PROJDIR)
+
+import site
+site.addsitedir(ROOTDIR)
 
 import tornado.options
 import tornado.locale
@@ -15,6 +16,8 @@ from tornado import web
 
 define("port", 8000)
 define("debug", True)
+define('database', 'mysql://root:123@localhost/feedburner?charset=utf8')
+define('memcache', '127.0.0.1:11211')
 
 define("static_path", os.path.join(PROJDIR, "static"))
 define("template_path", os.path.join(PROJDIR, "templates"))

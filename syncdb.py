@@ -1,6 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
+import app
 from models import create_all, User
 from models.mixin import UserMixin
 from config import db
