@@ -98,8 +98,9 @@ var waterFlow = {
                     },
                 success: function(data){
                     $('.container').data('data',data);
-                    for(var i=0; i<waterFlow.columnNum;i++){
-                        for (var j=0;j<2;j++){
+                    waterFlow._index = 0;
+                    for (var j=0;j<2;j++){
+                        for(var i=0; i<waterFlow.columnNum;i++){
                             if(waterFlow._loadFinish) return;
                             var index = waterFlow._index;
                             var html = '';
