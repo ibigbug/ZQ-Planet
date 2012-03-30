@@ -10,6 +10,10 @@ window.setTimeout = function(func, delay){
     return _st(func,delay);
 }
 $(document).ready(function(){
+    // go top
+
+    $('body').dblclick(function(){$(this).animate({'scrollTop':0});});
+
     //toggle sidebar
     $('.sidebar-toggle').click(function(){
         $('body').toggleClass('expanded');
