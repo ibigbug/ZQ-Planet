@@ -100,6 +100,7 @@ var waterFlow = {
                     $('.container').data('data',data);
                     for(var i=0; i<waterFlow.columnNum;i++){
                         for (var j=0;j<2;j++){
+                            if(waterFlow._loadFinish) return;
                             var index = waterFlow._index;
                             var html = '';
                             html += '<article id="index-'+index+'">';
