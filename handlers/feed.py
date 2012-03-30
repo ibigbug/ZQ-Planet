@@ -50,7 +50,6 @@ class FetchHandler(BaseHandler,FeedMixin,EntryMixin):
             for e in d.entries:
                 exist =\
                 self.db.query(Entry).filter_by(entry_title=to_unicode(e.title)).first()
-                print exist
                 if exist:
                     continue
                 entry = Entry(entry_title=to_unicode(e.title))
