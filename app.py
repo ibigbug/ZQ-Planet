@@ -13,7 +13,7 @@ from tornado.httpserver import HTTPServer
 from tornado import web
 
 define("port", 8000)
-define("debug", True)
+define("debug", False)
 define('database', 'mysql://root:123@localhost/feedburner?charset=utf8')
 define('memcache', '127.0.0.1:11211')
 

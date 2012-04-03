@@ -1,8 +1,8 @@
 @import "base.less";
 @import "lib.less";
 html {
-    background-image: url(../images/background.png);
     width: 100%;
+    background-image: url(../images/background.png);
     body {
         text-align: center;
         header {
@@ -108,7 +108,7 @@ html {
                 }
                 section {
                     margin-left: 180px;
-                    .transition(all 0.4s ease-in-out);
+                    .transition(margin 0.4s ease-in-out);
                     div.container {
                         .ft-left;
                         .column {
@@ -136,12 +136,63 @@ html {
                                     color: #708090;
                                 }
                                 .content {
-                                    margin-top: 10px;
-                                    * {
+                                    * * {
                                         max-width: 300px;
-                                        * {
-                                            max-width: 300px;
-                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                    .single-article {
+                        max-width: 1000px;
+                        background-color: #eee;
+                        padding: 20px 0 10px 30px;
+                        border-radius: 3px;
+                        border: 1px solid #dadada;
+                        color: #696969;
+                        a {
+                            color: #369;
+                            .opacity(0.9);
+                            text-decoration: none;
+                            &:hover{
+                                .opacity(1);
+                            }
+                        }
+                        .ft-left;
+                        .single-title {
+                            font-size: 26px;
+                            a {
+                                color: #8b0000;
+                            }
+                        }
+                        .single-content {
+                            margin-top: 15px;
+                            * * {
+                                max-width: 900px;
+                            }
+                            p {
+                                margin-top: 8px;
+                                font-size: 13px;
+                            }
+                        }
+                        .toolbar {
+                            border-radius: 3px;
+                            margin-top: 20px;
+                            max-width: 900px;
+                            border-top: 1px solid #dadada;
+                            padding-top: 13px;
+                            span {
+                                display: inline-block;
+                                a {
+                                    display: inline-block;
+                                    border-radius: 3px;
+                                    text-decoration: none;
+                                    color: #d3d3d3;
+                                    padding: 3px 6px;
+                                    font-size: 12px;
+                                    background: #f8f8ff;
+                                    &:hover {
+                                        color: #696969;
                                     }
                                 }
                             }
@@ -176,8 +227,8 @@ html {
                     }
                 }
             }
+        }
     }
-}
 
 // for animation
 .expanded #aside {

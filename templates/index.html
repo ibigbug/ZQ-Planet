@@ -7,7 +7,7 @@ Ziqiang Planet
 <ul>
     {% for f in feeds %}
     <li class="feed" id="feed-{{ f.id }}">
-    <a href="#">{{ f.feed_name }}</a>
+    <a href="#{{f.id}}">{{ f.feed_name }}</a>
     </li>
     {% end %}
 </ul>
@@ -23,7 +23,4 @@ Ziqiang Planet
 {% block section %}
 <div class="container">
 </div>
-{% end %}
-{% block script %}
-<script src="/static/js/func.js" type="text/javascript"></script>
 {% end %}

@@ -1,0 +1,37 @@
+{% extends "layout.html" %}
+{% block title %}{{ entry.entry_title }}|ZQ Planet{% end %}
+
+{% block sidebar %}
+<aside id="aside">
+<ul>
+    <li class="feed">
+    <a href="/#{{ previous }}" style="display:block;">返回列表</a>
+    </li>
+</ul>
+<span class="sidebar-toggle">
+    {{ xsrf_form_html() }}
+    <span class="table">
+        <span class="cell">&#9668;</span>
+        <span class="cell" style="display:none;">&#9658;</span>
+    </span>
+</span>
+</aside>
+{% end %}
+{% block section %}
+<article class="single-article">
+<h2 class="single-title">
+    <a href="{{ entry.entry_link }}">{{ entry.entry_title }}</a>
+</h2>
+<div class="single-meta">
+    <time datetime="{{ entry.entry_pubdate }}">{{ entry.entry_pubdate }}</time>
+    By {{ entry.entry_author }}
+</div>
+<div class="single-content">
+    {{ entry.entry_content }}
+</div>
+<div class="toolbar">
+    <span class="prev"><a href="/view/{{ entry.id - 1 }}">&#171;Prev</a></span>
+    <span class="next"><a href="/view/{{ entry.id + 1 }}">Next&#187;</a></span>
+</div>
+</article>
+{% end %}

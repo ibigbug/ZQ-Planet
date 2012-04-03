@@ -90,6 +90,7 @@ class EntryMixin(object):
         json = {'status':'OK','count':count,'data':[]}
         for e in entrys:
             _json = [{
+                'id' : e.id,
                 'title': e.entry_title,
                 'link': e.entry_link,
                 'content': e.entry_content,

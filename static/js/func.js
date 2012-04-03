@@ -1,3 +1,4 @@
+window.onerror = function(){ return true; }
 //rewrite setTimeout
 
 var _st = window.setTimeout;
@@ -9,6 +10,7 @@ window.setTimeout = function(func, delay){
     }
     return _st(func,delay);
 }
+
 $(document).ready(function(){
     // go top
 
@@ -43,13 +45,42 @@ $(document).ready(function(){
     });
     
     // init data
-    $($('.feed')[0]).click();
+    href = window.location.href;
+    if (href.indexOf('#')!=-1){
+        hash = href.split('#')[1];
+        $($('.feed')[hash-1]).click();
+    }
+    else {
+        $($('.feed')[0]).click();
+    };
 
 });
 
 function getCookie(name) {
     var r = document.cookie.match("\\b" + name + "=([^;]*)\\b");
     return r ? r[1] : undefined;
+}
+
+function random(limit) {
+    var limit = limit || 30;
+    return parseInt(Math.random()*limit+1);
+}
+function subString(str,len) {
+    var strlen = 0; 
+    var s = "";
+    for(var i = 0;i < str.length;i++){
+        if(str.charCodeAt(i) > 128){
+        strlen += 2;
+        }
+        else { 
+        strlen++;
+        }
+        s += str.charAt(i);
+        if(strlen >= len){ 
+            return s ;
+        }
+    }
+    return s;
 }
 
 function resize(){
@@ -103,15 +134,15 @@ var waterFlow = {
                 success: function(data){
                     $('.container').data('data',data);
                     waterFlow._index = 0;
-                    for (var j=0;j<2;j++){
+                    for (var j=0;j<5;j++){
                         for(var i=0; i<waterFlow.columnNum;i++){
                             if(waterFlow._loadFinish) return;
                             var index = waterFlow._index;
                             var html = '';
                             html += '<article id="index-'+index+'">';
-                            html += '<h3><a href="'+data.data[index]['link']+'">'+data.data[index]['title']+'</a></h3>';
+                            html += '<h3><a href="/view/'+data.data[index]['id']+'">'+data.data[index]['title']+'</a></h3>';
                             html += '<div class="meta"><time datetime="'+data.data[index].time+'">'+data.data[index].time+'</time> By '+data.data[index].author+'</div>'
-                            html += '<div class="content">'+data.data[index].content+'</div>'
+                            html += '<div class=content>'+subString(data.data[index]['content'],random(300))+'</content>';
                             html += '</aticle>';
                             html += '</div>';
                             $('#column-'+i).append(html);
@@ -129,9 +160,9 @@ var waterFlow = {
                 var index = waterFlow._index;
                 var html = '';
                 html += '<article id="index-'+index+'">';
-                html += '<h3><a href="'+data.data[i]['link']+'">'+data.data[i]['title']+'</a></h3>';
+                html += '<h3><a href="/view/'+data.data[index]['id']+'">'+data.data[i]['title']+'</a></h3>';
                 html += '<div class="meta"><time datetime="'+data.data[i].time+'">'+data.data[i].time+'</time> By '+data.data[i].author+'</div>'
-                html += '<div class="content">'+data.data[i].content+'</div>'
+                html += '<div class=content>'+subString(data.data[index]['content'],random(300))+'</content>';
                 html += '</aticle>';
                 html += '</div>';
                 $('#column-'+i).append(html);
@@ -146,9 +177,9 @@ var waterFlow = {
             var data = $('.container').data('data');
             var html = '';
             html += '<article id="index-'+this._index+'">';
-            html += '<h3><a href="'+data.data[this._index]['link']+'">'+data.data[this._index]['title']+'</a></h3>';
+            html += '<h3><a href="/view/'+data.data[this._index]['id']+'">'+data.data[this._index]['title']+'</a></h3>';
             html += '<div class="meta"><time datetime="'+data.data[this._index].time+'">'+data.data[this._index].time+'</time> By '+data.data[this._index].author+'</div>'
-            html += '<div class="content">'+data.data[this._index].content+'</div>'
+            html += '<div class=content>'+subString(data.data[this._index]['content'],random(300))+'</content>';
             html += '</aticle>';
             html += '</div>';
             return html;
