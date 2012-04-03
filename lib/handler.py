@@ -4,6 +4,17 @@ from tornado.web import RequestHandler
 from models.mixin import UserMixin
 
 class BaseHandler(RequestHandler, UserMixin):
+
+    def finish(self, chunk=None):
+        super(BaseHandler, self).finish(chunk)
+        if self.get_status() == 500:
+            try:
+                self.db.commit()
+            except:
+                self.db.rollback()
+            finally:
+                self.db.commit()
+
     @property
     def db(self):
         return self.application.db

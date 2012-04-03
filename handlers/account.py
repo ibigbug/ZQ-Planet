@@ -14,6 +14,10 @@ class LoginHandler(BaseHandler, UserMixin):
         username = self.get_argument("username")
         raw = self.get_argument("password")
         user = self.get_user_by_name(username)
+        if not user.token:
+            user.token = user.password.split('$')[0]
+            self.db.add(user)
+            self.db.commit()
         auth = self.check_password(username, raw)
         if auth:
             self.set_secure_cookie("user","%s$%s" % (user.id,user.token))

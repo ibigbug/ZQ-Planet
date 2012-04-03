@@ -4,8 +4,6 @@ import os
 PROJDIR = os.path.abspath(os.path.dirname(__file__))
 ROOTDIR = os.path.split(PROJDIR)[0]
 
-import site
-site.addsitedir(ROOTDIR)
 
 import tornado.options
 import tornado.locale
@@ -45,7 +43,7 @@ class Application(web.Application):
             ui_modules = ui_modules,
         )
         super(Application, self).__init__(handlers, **settings)
-        Application.db = db
+        Application.db = db.session
         Application.cache = cache
 
 
