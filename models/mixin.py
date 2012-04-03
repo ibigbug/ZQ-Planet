@@ -54,10 +54,9 @@ class FeedMixin(object):
         self.db.commit()
 
 
-    @staticmethod
-    def delete_feed(id):
-        feed = db.query(Feed).filter_by(id=id).one()
-        self.db.delete(feed)
+    def delete_feed(self,id):
+        f = Feed.query.filter_by(id=id).first()
+        self.db.delete(f)
         self.db.commit()
 
     @property
