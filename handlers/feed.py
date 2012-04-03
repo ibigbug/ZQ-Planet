@@ -53,7 +53,10 @@ class FetchHandler(BaseHandler,FeedMixin,EntryMixin):
                 if exist:
                     continue
                 entry = Entry(entry_title=to_unicode(e.title))
-                entry.entry_author = to_unicode(e.author)
+                try:
+                    entry.entry_author = to_unicode(e.author)
+                except:
+                    entry.entry_author = 'admin'
                 entry.entry_link = to_unicode(e.link)
                 entry.entry_content = to_unicode(e.description)
                 entry.entry_parrent = f.id

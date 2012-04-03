@@ -48,7 +48,7 @@ $(document).ready(function(){
     href = window.location.href;
     if (href.indexOf('#')!=-1){
         hash = href.split('#')[1];
-        $($('.feed')[hash-1]).click();
+        $($('#feed-'+hash)).click();
     }
     else {
         $($('.feed')[0]).click();
