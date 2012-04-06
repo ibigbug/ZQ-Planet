@@ -3,7 +3,7 @@
 View Feeds
 {% end %}
 {% block section %}
-<form action="/feed/view" method="post" class="ft-left">
+<form action="/admin/view" method="post" class="ft-left">
     {{ xsrf_form_html() }}
     <ul>
         {% for e in entry %}
@@ -15,7 +15,7 @@ View Feeds
         {% end %}
     </ul>
     <input type="submit" value="Delete Checked" />
-    <a href="/feed/add">add</a>
-    <a href="/feed/fetch">fetch</a>
+    <a href="/admin/add">add</a>
+    <a href="/admin/fetch">fetch</a>
 </form>
 {% end %}
