@@ -21,7 +21,7 @@ class AddHandler(BaseHandler,FeedMixin):
         feed_name = self.get_argument("feed_name")
         feed_url = self.get_argument("feed_url")
         self.save_feed(feed_name,feed_url)
-        return self.redirect("/feed/view")
+        return self.redirect("/admin/view")
 
 
 class ViewHandler(BaseHandler,FeedMixin):

@@ -21,7 +21,7 @@ class LoginHandler(BaseHandler, UserMixin):
         auth = self.check_password(username, raw)
         if auth:
             self.set_secure_cookie("user","%s$%s" % (user.id,user.token))
-            return self.redirect("/feed/add")
+            return self.redirect("/admin/add")
         return self.render("login.html")
 
 
