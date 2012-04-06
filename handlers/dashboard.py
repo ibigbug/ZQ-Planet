@@ -6,6 +6,9 @@ from models import Entry
 from lib.handler import BaseHandler
 from lib.decorators import cache
 
+import datetime
+
+
 class MainHandler(BaseHandler, FeedMixin, EntryMixin):
     @cache('initfeed')
     def get(self):
@@ -30,7 +33,18 @@ class ViewHandler(BaseHandler, FeedMixin, EntryMixin):
         return self.render("view.html",entry=entry,previous=previous)
 
 
+class FeedHandler(BaseHandler):
+    @cache('feed',1800)
+    def get(self):
+        self.set_header('Content-Type', 'text/xml; charset=utf-8')
+        entrys = Entry.query.order_by('-id')[:20]
+        now = datetime.datetime.utcnow()
+        html =  self.render_string('feed.xml',now=now,entrys=entrys)
+        self.finish(html)
+
+
 handlers = [
     (r"/",MainHandler),
     (r"/view/(\d+)",ViewHandler),
+    (r"/feed",FeedHandler),
 ]

@@ -66,7 +66,7 @@ class FetchHandler(BaseHandler,FeedMixin,EntryMixin):
                 self.db.commit()
     
 handlers = [
-    (r"/feed/add",AddHandler),
-    (r"/feed/view",ViewHandler),
-    (r"/feed/fetch",FetchHandler),
+    (r"/admin/add",AddHandler),
+    (r"/admin/view",ViewHandler),
+    (r"/admin/fetch",FetchHandler),
 ]

@@ -28,7 +28,7 @@ class Entry(db.Model):
     entry_link = Column(String(300), nullable=False)
     entry_content = Column(Text, nullable=False)
     entry_author = Column(String(100), nullable=False)
-    entry_pubdate = Column(String(100),nullable=True)
+    entry_pubdate = Column(DateTime,nullable=True)
     entry_parrent = Column(Integer(11),nullable=False)
 
     def __repr__(self):

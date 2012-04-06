@@ -12,10 +12,13 @@ from tornado.ioloop import IOLoop
 from tornado.httpserver import HTTPServer
 from tornado import web
 
+define("sitename","Ziqiang Planet")
+define("siteurl","http://planet.ziqiang.net")
+
 define("port", 8000)
 define("debug", False)
-define('database', 'mysql://root:123@localhost/feedburner?charset=utf8')
-define('memcache', '127.0.0.1:11211')
+define("database", "mysql://root:123@localhost/feedburner?charset=utf8")
+define("memcache", "127.0.0.1:11211")
 
 define("static_path", os.path.join(PROJDIR, "static"))
 define("template_path", os.path.join(PROJDIR, "templates"))

@@ -155,18 +155,20 @@ var waterFlow = {
             });
         }
         else{
-            for(var i=0; i<waterFlow.columnNum;i++){
-                data = $('.container').data('data');
-                var index = waterFlow._index;
-                var html = '';
-                html += '<article id="index-'+index+'">';
-                html += '<h3><a href="/view/'+data.data[index]['id']+'">'+data.data[i]['title']+'</a></h3>';
-                html += '<div class="meta"><time datetime="'+data.data[i].time+'">'+data.data[i].time+'</time> By '+data.data[i].author+'</div>'
-                html += '<div class=content>'+subString(data.data[index]['content'],random(300))+'</content>';
-                html += '</aticle>';
-                html += '</div>';
-                $('#column-'+i).append(html);
-                waterFlow._index++ ;
+            for (var j=0;j<5;j++){
+                for(var i=0; i<waterFlow.columnNum;i++){
+                    data = $('.container').data('data');
+                    var index = waterFlow._index;
+                    var html = '';
+                    html += '<article id="index-'+index+'">';
+                    html += '<h3><a href="/view/'+data.data[index]['id']+'">'+data.data[index]['title']+'</a></h3>';
+                    html += '<div class="meta"><time datetime="'+data.data[index].time+'">'+data.data[index].time+'</time> By '+data.data[index].author+'</div>'
+                    html += '<div class=content>'+subString(data.data[index]['content'],random(300))+'</content>';
+                    html += '</aticle>';
+                    html += '</div>';
+                    waterFlow._index++ ;
+                    $('#column-'+i).append(html);
+                }
                 if(waterFlow._index>=data.count) waterFlow._loadFinish = true;
             }
         }
