@@ -40,7 +40,6 @@ class ViewHandler(BaseHandler,FeedMixin):
 
 
 class FetchHandler(BaseHandler,FeedMixin,EntryMixin):
-    @login_required()
     def get(self):
         self.write(u"抓取中<a href='/'>回首页</a>")
         self.finish()
