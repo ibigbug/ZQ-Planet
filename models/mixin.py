@@ -2,6 +2,7 @@ from random import choice
 import hashlib
 
 from models import User, Feed, Entry
+from lib.filters import xmldatetime
 
 
 class UserMixin(object):
@@ -94,7 +95,7 @@ class EntryMixin(object):
                 'link': e.entry_link,
                 'content': e.entry_content,
                 'author': e.entry_author,
-                'time': e.entry_pubdate
+                'time': xmldatetime(e.entry_pubdate)
             }]
             json['data'].extend(_json)
         return json
