@@ -2,14 +2,12 @@
 @import "lib.less";
 html {
     width: 100%;
-    background-image: url(../images/background.png);
     body {
         text-align: center;
         header {
             background-color: #252525;
             .header{
                 .logo {
-                    .transition(all 0.4s ease-in-out);
                     font-family: 'Economica', sans-serif;
                     font-weight: bold;
                     font-size: 30px;
@@ -28,7 +26,6 @@ html {
                 form {
                     .fn-right;
                     input[type='search']{
-                        .transition(background 0.4s ease-in-out);
                         height: 20px;
                         font-size: 16px;
                         vertical-align: baseline;
@@ -51,8 +48,8 @@ html {
         #wrap {
             margin: 30px auto 80px;
             aside {
-                .transition(all 0.4s ease-in-out);
                 width: 150px;
+                height: auto;
                 background-color: #575D60;
                 color: rgba(238,255,255,0.8);
                 border-radius: 0 6px 6px 0;
@@ -68,7 +65,7 @@ html {
                         cursor: pointer;
                         margin: 3px 0;
                         padding: 3px 15px 3px 10px;
-                        &:hover{
+                        &:hover {
                             background-color: rgba(238,238,238,0.3);
                             color: rgba(238,238,238,0.8);
                         }
@@ -81,64 +78,58 @@ html {
                         }
                     }
                 }
-                .sidebar-toggle {
-                    color: rgba(238,238,238,0.8);
-                    position: absolute;
-                    right: 0;
-                    top: 0;
-                    display: block;
-                    width: 20px;
-                    height: 100%;
-                    cursor: pointer;
-                    font-size: 16px;
-                    &:hover {
-                        background: rgba(238,238,238,0.3);
-                        text-decoration:none;
-                    }
-                    .table {
-                        display:table;
-                        height: 100%;
-                        width: 20px;
-                        .cell {
-                            display: table-cell;
-                            vertical-align: middle;
-                            }
-                        }
-                    }
-                }
+            }
                 section {
-                    margin-left: 180px;
-                    .transition(margin 0.4s ease-in-out);
+                    margin-left: 150px;
+                    .ft-left;
                     div.container {
-                        .ft-left;
-                        .column {
-                            width: 300;
-                            margin-right: 10px;
-                            display: inline-block;
-                            vertical-align: top;
-                            background-position: 0 -20px;
-                            article {
-                                width: 300px;
-                                background-color: #eee;
-                                border-radius: 6px;
-                                margin-bottom: 20px;
-                                padding: 5px;
-                                color: #333631;
-                                text-shadow: 1px 1px 1px #fff;
-                                h3 a { 
+                        margin-left: 30px;
+                        width: auto;
+                        margin-right: 10px;
+                        display: inline-block;
+                        vertical-align: top;
+                        article {
+                            max-width: 1000px;
+                            background-color: white;
+                            border-radius: 6px;
+                            margin-bottom: 20px;
+                            padding: 15px;
+                            text-shadow: 1px 1px 1px #fff;
+                            color: black;
+                            h3 a { 
+                                font-size: 24px;
+                                color: #8b0000;
+                            }
+                            .meta {
+                                margin: 10px 0;
+                                color: #708090;
+                                border-bottom: 1px solid #eee;
+                            }
+                            .content {
+                                h1 {
                                     font-size: 16px;
-                                    color: #8b0000;
+                                    font-weight: bold;
                                 }
-                                & * a {
-                                    color: #333631;
+                                p {
+                                    margin-bottom: 15px;
                                 }
-                                .meta {
-                                    color: #708090;
-                                }
-                                .content {
-                                    * * {
-                                        max-width: 300px;
+                                a {
+                                    color: #369;
+                                    &:link,
+                                    &:visited,
+                                    &:hover,
+                                    &:active {
+                                        color: #369;
                                     }
+                                }
+                                .code {
+                                    .highlight {
+                                        border: 1px dashed #ddd;
+                                        padding: 10px;
+                                    }
+                                }
+                                * * {
+                                    max-width: 1000px;
                                 }
                             }
                         }
@@ -230,16 +221,9 @@ html {
         }
     }
 
+
 // for animation
-.expanded #aside {
-    left: -130px;
-}
-.expanded .header .logo {
-    margin-left: 50px;
-}
-.expanded #section {
-    margin-left: 65px;
-}
+
 #footer.show {
     margin-bottom: 0;
 }

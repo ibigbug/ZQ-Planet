@@ -4,20 +4,15 @@ Ziqiang Planet
 {% end %}
 {% block sidebar %}
 <aside id="aside">
-<ul>
-    {% for f in feeds %}
-    <li class="feed" id="feed-{{ f.id }}">
-    <a style="display:block;" href="#{{f.id}}">{{ f.feed_name }}</a>
-    </li>
-    {% end %}
-</ul>
-<span class="sidebar-toggle">
-    {{ xsrf_form_html() }}
-    <span class="table">
-        <span class="cell">&#9668;</span>
-        <span class="cell" style="display:none;">&#9658;</span>
-    </span>
-</span>
+<div class="sidebar">
+    <ul>
+        {% for f in feeds %}
+        <li class="feed" id="feed-{{ f.id }}">
+        <a style="display:block;" href="#{{f.id}}">{{ f.feed_name }}</a>
+        </li>
+        {% end %}
+    </ul>
+</div>
 </aside>
 {% end %}
 {% block section %}
