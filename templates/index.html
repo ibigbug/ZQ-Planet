@@ -8,7 +8,7 @@ Ziqiang Planet
     <ul>
         {% for f in feeds %}
         <li class="feed" id="feed-{{ f.id }}">
-        <a style="display:block;" href="#{{f.id}}">{{ f.feed_name }}</a>
+        <a style="display:block;" href="#">{{ f.feed_name }}</a>
         </li>
         {% end %}
     </ul>
@@ -17,5 +17,9 @@ Ziqiang Planet
 {% end %}
 {% block section %}
 <div class="container">
+</div>
+<div class="elevator-container">
+    <ul class="elevator">
+    </ul>
 </div>
 {% end %}

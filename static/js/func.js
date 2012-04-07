@@ -15,13 +15,6 @@ $(document).ready(function(){
 
     $('body').dblclick(function(){$(this).animate({'scrollTop':0});});
 
-    //toggle sidebar
-    $('.sidebar-toggle').click(function(){
-        $('body').toggleClass('expanded');
-        $('.cell').toggle();
-        window._st(resize,500);
-    });
-
     //fetch feed
     $('.feed').click(function(){
         var id = $(this).attr('id').split('-')[1];
@@ -34,24 +27,16 @@ $(document).ready(function(){
     $(window).scroll(function() {
         var wh = $(window).height();
         var dh = $(document).height();
-        var fh = $('#footer').height();
-        var s = $('body').scrollTop();
+        var fh = $('#footer').height(); var s = $('body').scrollTop();
         if ((s + wh + fh) > dh) {
-            $('#footer').addClass('show');
+            $('#footer,.elevator-container').addClass('show');
         } else {
-            $('#footer').removeClass('show');
+            $('#footer,.elevator-container').removeClass('show');
         }
     });
     
     // init data
-    href = window.location.href;
-    if (href.indexOf('#')!=-1){
-        hash = href.split('#')[1];
-        $($('#feed-'+hash)).click();
-    }
-    else {
-        $($('.feed')[0]).click();
-    };
+    $($('.feed')[0]).click();
 
 });
 
@@ -71,75 +56,51 @@ var waterFlow = {
     //_index: 0,
     append: function(id){
         //if(this._isFirst){
-            req = $.ajax({
-                type: 'POST',
-                url: '/',
-                data: { 
-                        id:id,
-                        _xsrf: getCookie('_xsrf'),
-                    },
-                success: function(data){
-                    //$('.container').data('data',data);
-                    //waterFlow._index = 0;
-                    var html = '';
-                    for (var j=0;j<data.count;j++){
-                        //if(waterFlow._loadFinish) return;
-                        //var index = waterFlow._index;
-                        html += '<article id="index-'+j+'">';
-                        html += '<h3><a href="'+data.data[j]['link']+'">'+data.data[j]['title']+'</a></h3>';
-                        html += '<div class="meta"><time datetime="'+data.data[j].time+'">'+data.data[j].time+'</time> By '+data.data[j].author+'</div>'
-                        html += '<div class=content>'+data.data[j]['content']+'</div>';
-                        html += '</article>';
-                        //waterFlow._isFirst = false;
-                        //waterFlow._index++ ;
-                        //if(waterFlow._index>=data.count) waterFlow._loadFinish = true;
-                    }
-                    $('.container').append(html);
+        $('.container').html('');
+        $('.elevator').html('');
+        req = $.ajax({
+            type: 'POST',
+            url: '/',
+            data: { 
+                    id:id,
+                    _xsrf: getCookie('_xsrf'),
                 },
-            });
-        //}
-        /*
-        else{
-            for (var j=0;j<5;j++){
-                for(var i=0; i<waterFlow.columnNum;i++){
-                    data = $('.container').data('data');
-                    var index = waterFlow._index;
-                    var html = '';
-                    html += '<article id="index-'+index+'">';
-                    html += '<h3><a href="/view/'+data.data[index]['id']+'">'+data.data[index]['title']+'</a></h3>';
-                    html += '<div class="meta"><time datetime="'+data.data[index].time+'">'+data.data[index].time+'</time> By '+data.data[index].author+'</div>'
-                    html += '<div class=content>'+subString(data.data[index]['content'],random(300))+'</content>';
-                    html += '</aticle>';
-                    html += '</div>';
-                    waterFlow._index++ ;
-                    $('#column-'+i).append(html);
+            success: function(data){
+                //$('.container').data('data',data);
+                //waterFlow._index = 0;
+                var html = '';
+                var elevatorHtml = '';
+                for (var j=0;j<data.count;j++){
+                    //if(waterFlow._loadFinish) return;
+                    //var index = waterFlow._index;
+                    html += '<article class="articles" id="index-'+j+'">';
+                    html += '<h3><a href="'+data.data[j]['link']+'">'+data.data[j]['title']+'</a></h3>';
+                    html += '<div class="meta"><time datetime="'+data.data[j].time+'">'+data.data[j].time+'</time> By '+data.data[j].author+'</div>'
+                    html += '<div class=content>'+data.data[j]['content']+'</div>';
+                    html += '</article>';
+                    elevatorHtml += '<li class="elevator" id="floor-'+j+'"><a href="#index-'+j+'">'+data.data[j]['title']+'</a></li>';
+                    //waterFlow._isFirst = false;
+                    //waterFlow._index++ ;
+                    //if(waterFlow._index>=data.count) waterFlow._loadFinish = true;
                 }
-                if(waterFlow._index>=data.count) waterFlow._loadFinish = true;
-            }
-        }*/
+                $('.container').append(html);
+                $('.elevator').append(elevatorHtml);
+            },
+        });
         return this;
     },
-    /*
-    onscroll: function(){
-        window.onscroll = function(){
-            var st = $('body').scrollTop();
-            if(!this._loadFinish){
-                var columns = $('.column');
-                var _sT = $('body').scrollTop();
-                for(var i=0;i<columns.length;i++){
-                    _eleTop = $(columns[i]).offset().top;
-                    _eleHeight = $(columns[i]).height();
-                    eleBottom = _eleTop + _eleHeight - _sT ;
-                    if($(window).height()-eleBottom>0){
-                        var html = waterFlow.buildHtml();
-                        $('#column-'+i).append(html);
-                        $('#index-'+waterFlow._index).hide().fadeIn(400);
-                        waterFlow._index +=1;
-                        if(waterFlow._index>=$('.container').data('data').count) waterFlow._loadFinish = true;
-                    }
-                }
-            }
+}
+// detect current
+window.onscroll = function(){
+    var articles = $('.articles');
+    var _current = 0;
+    for (var j=0;j<articles.length;j++){
+        var aT = $(articles[j]).offset().top;
+        var wT = $(window).scrollTop();
+        if (aT - wT <= -$(articles[j]).height()/2) {
+            _current = j + 1;
         }
-        return this;
-    },*/
+    }
+    $('.elevator').removeClass('ele-current');
+    $('#floor-'+_current).addClass('ele-current');
 }

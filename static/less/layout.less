@@ -1,5 +1,6 @@
 @import "base.less";
 @import "lib.less";
+@import "pygments.less";
 html {
     width: 100%;
     body {
@@ -84,12 +85,12 @@ html {
                     .ft-left;
                     div.container {
                         margin-left: 30px;
-                        width: auto;
+                        max-width: 900px;
                         margin-right: 10px;
                         display: inline-block;
                         vertical-align: top;
                         article {
-                            max-width: 1000px;
+                            max-width: 800px;
                             background-color: white;
                             border-radius: 6px;
                             margin-bottom: 20px;
@@ -102,7 +103,7 @@ html {
                             }
                             .meta {
                                 margin: 10px 0;
-                                color: #708090;
+                                color: #c0c0c0;
                                 border-bottom: 1px solid #eee;
                             }
                             .content {
@@ -129,61 +130,32 @@ html {
                                     }
                                 }
                                 * * {
-                                    max-width: 1000px;
+                                    max-width: 9000px;
                                 }
                             }
                         }
                     }
-                    .single-article {
-                        max-width: 1000px;
-                        background-color: #eee;
-                        padding: 20px 30px 10px 30px;
-                        border-radius: 3px;
-                        border: 1px solid #dadada;
-                        color: #696969;
-                        a {
-                            color: #369;
-                            .opacity(0.9);
-                            text-decoration: none;
-                            &:hover{
-                                .opacity(1);
-                            }
-                        }
-                        .ft-left;
-                        .single-title {
-                            font-size: 26px;
-                            a {
-                                color: #8b0000;
-                            }
-                        }
-                        .single-content {
-                            margin-top: 15px;
-                            * * {
-                                max-width: 900px;
-                            }
-                            p {
-                                margin-top: 8px;
-                                font-size: 13px;
-                            }
-                        }
-                        .toolbar {
-                            border-radius: 3px;
-                            margin-top: 20px;
-                            max-width: 900px;
-                            border-top: 1px solid #dadada;
-                            padding-top: 13px;
-                            span {
-                                display: inline-block;
+                    .elevator-container {
+                        .transition(margin 0.4s ease-in-out);
+                        position: fixed;
+                        max-height: 200px;
+                        overflow: auto;
+                        right: 0;
+                        bottom: 0;
+                        background-color: white;
+                        border-radius: 5px 0 0 5px;
+                        padding: 10px 0;
+                        .elevator {
+                            li {
+                                padding: 0px 10px;
+                                font-size: 14px;
                                 a {
-                                    display: inline-block;
-                                    border-radius: 3px;
-                                    text-decoration: none;
-                                    color: #d3d3d3;
-                                    padding: 3px 6px;
-                                    font-size: 12px;
-                                    background: #f8f8ff;
-                                    &:hover {
-                                        color: #696969;
+                                    color: #c0c0c0;
+                                }
+                                &.ele-current {
+                                    background-color: rgba(220,220,220,0.8);
+                                    a {
+                                        color: #8b0000;
                                     }
                                 }
                             }
@@ -226,4 +198,7 @@ html {
 
 #footer.show {
     margin-bottom: 0;
+}
+.elevator-container.show {
+    margin-bottom: 60px;
 }
