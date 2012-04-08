@@ -7,8 +7,10 @@ from models.mixin import UserMixin
 from config import db
 from argparse import ArgumentParser
 
+
 def syncdb():
     db.create_db()
+
 
 def create_super_user():
     c = raw_input("Create Super User?(y/n)")
@@ -25,18 +27,21 @@ def create_super_user():
     db.session.commit()
     print "Finished!!!"
 
+
 def init():
     syncdb()
     create_super_user()
 
+
 def main():
-    p = ArgumentParser(usage='-syncdb || -createuser', 
+    p = ArgumentParser(usage='-syncdb || -createuser',
                        description='For syncdb and create super user')
-    p.add_argument(dest='cmd',nargs='*')
+    p.add_argument(dest='cmd', nargs='*')
     args = p.parse_args()
 
     if not args.cmd:
         return init()
+
     def run_command(cmd):
         if cmd == 'syncdb':
             return syncdb()

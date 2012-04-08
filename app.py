@@ -5,15 +5,13 @@ PROJDIR = os.path.abspath(os.path.dirname(__file__))
 ROOTDIR = os.path.split(PROJDIR)[0]
 
 
-import tornado.options
-import tornado.locale
 from tornado.options import define, options
 from tornado.ioloop import IOLoop
 from tornado.httpserver import HTTPServer
 from tornado import web
 
-define("sitename","Ziqiang Planet")
-define("siteurl","http://planet.ziqiang.net")
+define("sitename", "Ziqiang Planet")
+define("siteurl", "http://planet.ziqiang.net")
 
 define("port", 8000)
 define("debug", False)
@@ -24,9 +22,7 @@ define("static_path", os.path.join(PROJDIR, "static"))
 define("template_path", os.path.join(PROJDIR, "templates"))
 define("xsrf_cookies", True)
 define("login_url", "/login")
-define("cookie_secret", "cookie_secret") 
-
-
+define("cookie_secret", "cookie_secret")
 
 
 class Application(web.Application):
@@ -43,7 +39,7 @@ class Application(web.Application):
             template_path=options.template_path,
             static_path=options.static_path,
 
-            ui_modules = ui_modules,
+            ui_modules=ui_modules,
         )
         super(Application, self).__init__(handlers, **settings)
         Application.db = db.session
