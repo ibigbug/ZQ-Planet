@@ -107,7 +107,6 @@ html body #wrap section div.container article .meta{margin:10px 0;color:#c0c0c0;
 html body #wrap section div.container article .content h1,html body #wrap section div.container article .content * h1,html body #wrap section div.container article .content h2,html body #wrap section div.container article .content * h2{font-size:20px;font-weight:bold;}
 html body #wrap section div.container article .content h3,html body #wrap section div.container article .content * h3,html body #wrap section div.container article .content h3,html body #wrap section div.container article .content * h3{font-size:16px;font-weight:bold;}
 html body #wrap section div.container article .content p{margin-bottom:15px;}
-html body #wrap section div.container article .content .code .highlight{border:1px dashed #ddd;padding:10px;}
 html body #wrap section div.container article .content pre{border:1px dashed #ddd;padding:10px;margin:10px auto;}
 html body #wrap section div.container article .content * *{max-width:900px;}
 html body #wrap section div.container article .content li{list-style-type:square;margin-left:15px;}
