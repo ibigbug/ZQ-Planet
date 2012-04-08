@@ -104,8 +104,8 @@ html body #wrap{margin:30px auto 80px;}html body #wrap aside{width:150px;height:
 html body #wrap aside ul li a{color:#eee;text-decoration:none;}html body #wrap aside ul li a:hover{filter:alpha(opacity=80);opacity:0.8;}
 html body #wrap section{margin-left:150px;text-align:left;}html body #wrap section div.container{margin-left:30px;max-width:900px;margin-right:10px;display:inline-block;vertical-align:top;}html body #wrap section div.container article{max-width:800px;background-color:white;border-radius:6px;margin-bottom:20px;padding:15px;text-shadow:1px 1px 1px #fff;color:black;}html body #wrap section div.container article h3 a{font-size:24px;color:#8b0000;}
 html body #wrap section div.container article .meta{margin:10px 0;color:#c0c0c0;border-bottom:1px solid #eee;}
-html body #wrap section div.container article .content h1,html body #wrap section div.container article .content * h1,html body #wrap section div.container article .content h2,html body #wrap section div.container article .content * h2{font-size:20px;font-weight:bold;}
-html body #wrap section div.container article .content h3,html body #wrap section div.container article .content * h3,html body #wrap section div.container article .content h3,html body #wrap section div.container article .content * h3{font-size:16px;font-weight:bold;}
+html body #wrap section div.container article .content h1,html body #wrap section div.container article .content * h1,html body #wrap section div.container article .content h2,html body #wrap section div.container article .content * h2{font-size:20px;}
+html body #wrap section div.container article .content h3,html body #wrap section div.container article .content * h3,html body #wrap section div.container article .content h3,html body #wrap section div.container article .content * h3{font-size:16px;}
 html body #wrap section div.container article .content p{margin-bottom:15px;}
 html body #wrap section div.container article .content pre{border:1px dashed #ddd;padding:10px;margin:10px auto;}
 html body #wrap section div.container article .content * *{max-width:900px;}
