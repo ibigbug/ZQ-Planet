@@ -23,7 +23,7 @@ $(document).ready(function(){
     });
 
     // footer 
-    $('#footer').addClass('show');
+    $('#footer,.elevator-container').addClass('show');
     $(window).scroll(function() {
         var wh = $(window).height();
         var dh = $(document).height();
