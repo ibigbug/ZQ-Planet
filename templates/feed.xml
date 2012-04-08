@@ -10,8 +10,8 @@
         <author><name>{{ entry.entry_author }}</name><uri></uri></author>
         <link href="{{ context.siteurl }}/view/{{ entry.id }}"/>
         <published>{{ xmldatetime(entry.entry_pubdate) }}</published>
-        <id>http://planet.ziqiang.net/view/{{ entry.id }}</id>
-        <content type="html" xml:base="{{ context.sitename }}" xml:lang="en">
+        <id>{{ context.siteurl }}/view/{{ entry.id }}</id>
+        <content type="html" xml:base="{{ context.siteurl }}" xml:lang="en">
             <![CDATA[ {{ entry.entry_content }} ]]>
         </content>
     </entry>
