@@ -108,21 +108,16 @@ html {
                                 border-bottom: 1px solid #eee;
                             }
                             .content {
-                                h1 {
+                                h1, * h1, h2, * h2 {
+                                    font-size: 20px;
+                                    font-weight: bold;
+                                }
+                                h3, * h3, h3, * h3 {
                                     font-size: 16px;
                                     font-weight: bold;
                                 }
                                 p {
                                     margin-bottom: 15px;
-                                }
-                                a {
-                                    color: #369;
-                                    &:link,
-                                    &:visited,
-                                    &:hover,
-                                    &:active {
-                                        color: #369;
-                                    }
                                 }
                                 .code {
                                     .highlight {
@@ -130,8 +125,17 @@ html {
                                         padding: 10px;
                                     }
                                 }
+                                pre {
+                                    border: 1px dashed #ddd;
+                                    padding: 10px;
+                                    margin: 10px auto;
+                                }
                                 * * {
-                                    max-width: 9000px;
+                                    max-width: 900px;
+                                }
+                                li {
+                                    list-style-type: square;
+                                    margin-left: 15px;
                                 }
                             }
                         }
