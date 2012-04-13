@@ -68,23 +68,26 @@ var waterFlow = {
             success: function(data){
                 //$('.container').data('data',data);
                 //waterFlow._index = 0;
-                var html = '';
+                var contentHtml = [];
                 var elevatorHtml = '';
                 for (var j=0;j<data.count;j++){
                     //if(waterFlow._loadFinish) return;
                     //var index = waterFlow._index;
-                    html += '<article class="articles" id="index-'+j+'">';
-                    html += '<h3><a href="'+data.data[j]['link']+'">'+data.data[j]['title']+'</a></h3>';
-                    html += '<div class="meta"><time datetime="'+data.data[j].time+'">'+data.data[j].time+'</time> By '+data.data[j].author+'</div>'
-                    html += '<div class=content>'+data.data[j]['content']+'</div>';
-                    html += '</article>';
+                    contentHtml.push('<article class="articles" id="index-'+j+'">');
+                    contentHtml.push('<h3><a href="'+data.data[j]['link']+'">'+data.data[j]['title']+'</a></h3>');
+                    contentHtml.push('<div class="meta"><time datetime="'+data.data[j].time+'">'+data.data[j].time+'</time> By '+data.data[j].author+'</div>');
+                    contentHtml.push('<div class=content>'+data.data[j]['content']+'</div>');
+                    contentHtml.push('</article>');
                     elevatorHtml += '<li class="elevator" id="floor-'+j+'"><a href="#index-'+j+'">'+data.data[j]['title']+'</a></li>';
                     //waterFlow._isFirst = false;
                     //waterFlow._index++ ;
                     //if(waterFlow._index>=data.count) waterFlow._loadFinish = true;
                 }
-                $('.container').append(html);
-                $('.elevator').append(elevatorHtml);
+                contentHtml = contentHtml.join('');
+                $('.container')[0].innerHTML = contentHtml;
+                $('.elevator')[0].innerHTML = elevatorHtml;
+                contentHtml = [];
+                elevatorHtml = '';
             },
         });
         return this;
